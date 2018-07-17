@@ -1,0 +1,10 @@
+{
+  "name": "Weight_System",
+  "version": "0.0.1",
+  "title": "Weight System",
+  "author": "LuziferSenpai",
+  "Licence": "Custom",
+  "description": "A Weight System which limits the Amount of Items you can carry.",
+  "dependencies": ["base >= 0.16"],
+  "factorio_version": "0.16"
+}
