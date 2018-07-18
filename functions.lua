@@ -201,6 +201,8 @@ Functions =
 			}
 			local z = game.entity_prototypes[na] or game.tile_prototypes[na] or game.equipment_prototypes[na] or game.item_prototypes[na]
 			B06[1].tooltip = z.localised_name
+			B06[1].style.width = 32
+			B06[1].style.height = 32
 		end
 	end,
 	AddButton = function( f, n, c )

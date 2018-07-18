@@ -1,4 +1,12 @@
-local Weights =
+function modtest( n )
+	if ( mods and mods[n] ) or ( game and game.active_mods[n] ) then
+		return true
+	else
+		return false
+	end
+end
+
+Weights =
 {
 	["Ammo"] =
 	{
@@ -56,7 +64,12 @@ local Weights =
 		["oil-refinery"] = 20000,
 		["chemical-plant"] = 12500,
 		["centrifuge"] = 48000,
-		["rocket-silo"] = 1000000
+		["rocket-silo"] = 1000000,
+
+		-- MoreScience
+
+		["seed-extractor"] = 7500,
+		["wood-plantation"] = 10000,
 	},
 	["Barrels"] =
 	{
@@ -69,7 +82,21 @@ local Weights =
 		["lubricant-barrel"] = 2,
 		["petroleum-gas-barrel"] = 2,
 		["sulfuric-acid-barrel"] = 2,
-		["water-barrel"] = 2
+		["water-barrel"] = 2,
+
+		-- MoreScience
+
+		["advanced-science-fluid-1-barrel"] = 2,
+		["advanced-science-fluid-2-barrel"] = 2,
+		["basic-automation-science-fluid-barrel"] = 2,
+		["basic-logistics-science-fluid-barrel"] = 2,
+		["basic-military-science-fluid-barrel"] = 2,
+		["basic-power-science-fluid-barrel"] = 2,
+		["basic-science-fluid-1-barrel"] = 2,
+		["basic-science-fluid-2-barrel"] = 2,
+		["basic-science-fluid-3-barrel"] = 2,
+		["extreme-science-fluid-barrel"] = 2,
+		["purified-water-barrel"] = 2,
 	},
 	["Belts"] =
 	{
@@ -99,10 +126,15 @@ local Weights =
 		["power-switch"] = 1,
 		["programmable-speaker"] = 1,
 
+		-- SantasNixieTubeDisplay
+
+		["SNTD-nixie-tube"] = 1,
+		["SNTD-nixie-tube-small"] = 0.5,
+
 		-- Wireless Circuit Network
 
 		["Wireless-Sender"] = 1,
-		["Wireless-Reciever"] = 1
+		["Wireless-Reciever"] = 1,
 	},
 	["Defense"] =
 	{
@@ -121,9 +153,20 @@ local Weights =
 		["artillery-turret"] = 1000,
 		["radar"] = 500,
 
+		-- ForceFields2
+
+		["forcefield-emitter"] = 100,
+
+		-- Reinforced Walls
+
+		["reinforced-wall"] = 25,
+		["acid-resist-wall"] = 30,
+		["damage-reflect-wall"] = 45,
+
+
 		-- Senpais Trains
 
-		["Senpais-Dora"] = 8000
+		["Senpais-Dora"] = 8000,
 	},
 	["Drills"] =
 	{
@@ -168,6 +211,10 @@ local Weights =
 		["personal-roboport-mk2-equipment"] = 25,
 		["night-vision-equipment"] = 25,
 
+		-- CorpseFlare
+
+		["corpse-flare"] = 6,
+
 		-- Senpais Trains
 
 		["laser-2"] = 25,
@@ -187,7 +234,7 @@ local Weights =
 
 		["raw-wood"] = 1,
 		["solid-fuel"] = 4,
-		["rocket-fuel"] = 7,5,
+		["rocket-fuel"] = 7.5,
 		["nuclear-fuel"] = 10,
 		["uranium-fuel-cell"] = 12.75
 	},
@@ -208,7 +255,11 @@ local Weights =
 		["hazard-concrete"] = 5,
 		["refined-concrete"] = 7.5,
 		["refined-hazard-concrete"] = 7.5,
-		["landfill"] = 10
+		["landfill"] = 10,
+
+		-- Landmover
+
+		["landmover"] = 10
 	},
 	["Ingredients"] =
 	{
@@ -229,12 +280,24 @@ local Weights =
 		["explosives"] = 0.5,
 		["battery"] = 0.1,
 		["flying-robot-frame"] = 1,
-		["low-density-structure"] = 1,
-		["rocket-control-unit"] = 1,
+		["low-density-structure"] = 25,
+		["rocket-control-unit"] = 17.5,
+		["rocket-part"] = 50,
 		["satellite"] = 600,
 		["uranium-235"] = 4,
 		["uranium-238"] = 5,
-		["used-up-uranium-fuel-cell"] = 3
+		["used-up-uranium-fuel-cell"] = 3,
+
+		-- MoreScience
+
+		["cork"] = 0.1,
+		["empty-bottle"] = 2,
+		["rocketpart-hull-component"] = 200,
+		["rocketpart-ion-thruster"] = 1500,
+		["rocketpart-ion-booster"] = 8000,
+		["rocketpart-fusion-reactor"] = 5000,
+		["rocketpart-shield-array"] = 3000,
+		["rocketpart-laser-array"] = 3000,
 	},
 	["Inserters"] =
 	{
@@ -309,7 +372,11 @@ local Weights =
 		["copper-ore"] = 0.5,
 		["stone"] = 0.5,
 		["coal"] = 0.5,
-		["uranium-ore"] = 1
+		["uranium-ore"] = 1,
+
+		-- MoreScience
+
+		["tree-seed"] = 0.3,
 	},
 	["Other"] =
 	{
@@ -333,7 +400,13 @@ local Weights =
 
 		["iron-plate"] = 1,
 		["copper-plate"] = 1,
-		["steel-plate"] = 5
+		["steel-plate"] = 5,
+
+		-- MoreScience
+
+		["sand"] = 0.4,
+		["glass"] = 1,
+		["organic-tree"] = 3,
 	},
 	["Poles"] =
 	{
@@ -364,7 +437,25 @@ local Weights =
 		["military-science-pack"] = 2.5,
 		["production-science-pack"] = 2.5,
 		["high-tech-science-pack"] = 2.5,
-		["space-science-pack"] = 2.5
+		["space-science-pack"] = 2.5,
+
+		-- MoreScience
+
+		["lab-burner"] = 175,
+		["lab-mk2"] = 300,
+		["basic-automation-science-pack"] = 2.5,
+		["basic-power-science-pack"] = 2.5,
+		["basic-logistics-science-pack"] = 2.5,
+		["infused-basic-science-pack-1"] = 4.5,
+		["infused-basic-science-pack-2"] = 4.5,
+		["infused-basic-military-science-pack"] = 4.5,
+		["infused-basic-automation-science-pack"] = 4.5,
+		["infused-basic-science-pack-3"] = 4.5,
+		["infused-basic-power-science-pack"] = 4.5,
+		["infused-advanced-science-pack-1"] = 4.5,
+		["infused-basic-logistics-science-pack"] = 4.5,
+		["infused-advanced-science-pack-2"] = 4.5,
+		["infused-extreme-science-pack"] = 4.5,
 	},
 	["Splitter"] =
 	{
@@ -383,9 +474,9 @@ local Weights =
 		["steel-chest"] = 50,
 		["storage-tank"] = 125,
 
-		-- Item Collector
+		-- Item Collector Updated
 
-		["item-collector-area"] = 50
+		["item-collector-area"] = 50,
 
 	},
 	["Tools"] =
@@ -398,7 +489,15 @@ local Weights =
 
 		-- Atomic Pickaxe
 
-		["atomic-pickaxe"] = 7.5
+		--["atomic-pickaxe"] = 7.5,
+
+		-- Land Mover
+
+		["landmover-shovel"] = 3,
+
+		-- More Science
+
+		["hand-saw"] = 3,
 	},
 	["UBelts"] =
 	{
@@ -433,5 +532,7 @@ local Weights =
 		["flamethrower"] = 15
 	},
 }
+
+require "modsupport/AtomicPickaxe"
 
 return Weights

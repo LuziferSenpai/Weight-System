@@ -3,6 +3,7 @@ require "mod-gui"
 local Functions = require "functions"
 local ev = defines.events
 local di = defines.inventory
+local NOWEIGHT = require "noweight"
 
 script.on_init( Functions.Load )
 
@@ -95,4 +96,14 @@ script.on_event( ev.on_research_finished, function( ee )
 			end
 		end
 	end
+end )
+
+commands.add_command("print_missing_weights", "Prints out the Missing Weights", function()
+	local t = ""
+	for n, i in pairs( game.item_prototypes ) do
+		if not ( global.SWeight[n] or NOWEIGHT[n] or n:find( "creative" ) or n:find( "blueprint" ) or n:find( "book" ) or n:find( "forcefield" ) ) then
+				t = t .. n .. "\n"
+		end
+	end
+	game.write_file( "missing_weights.txt", t )
 end )
