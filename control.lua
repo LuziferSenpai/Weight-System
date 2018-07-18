@@ -98,7 +98,7 @@ script.on_event( ev.on_research_finished, function( ee )
 	end
 end )
 
-commands.add_command("print_missing_weights", "Prints out the Missing Weights", function()
+commands.add_command("missing_weights", "Prints out the Missing Weights", function()
 	local t = ""
 	for n, i in pairs( game.item_prototypes ) do
 		if not ( global.SWeight[n] or NOWEIGHT[n] or n:find( "creative" ) or n:find( "blueprint" ) or n:find( "book" ) or n:find( "forcefield" ) ) then

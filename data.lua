@@ -35,8 +35,8 @@ WeightSystem.Functions =
 
 for n in pairs( Weights ) do
 	data:extend{ { type = "ammo-category", name = n } }
-	WeightSystem.Functions.AddTech( "WeightSystem-" .. n .. "-1", MODNAME .. "/graphics/test.png", n, 0.02, nil, { count_formula = "200*L", ingredients = { { "science-pack-1", 2 }, { "science-pack-2", 2 }, { "science-pack-3", 2 }, { "production-science-pack", 2 }, { "high-tech-science-pack", 2 } }, time = 60 }, 5 )
-	WeightSystem.Functions.AddTech( "WeightSystem-" .. n .. "-6", MODNAME .. "/graphics/test.png", n, 0.10, { "WeightSystem-" .. n .. "-1" }, { count_formula = "200*L", ingredients = { { "science-pack-1", 2 }, { "science-pack-2", 2 }, { "science-pack-3", 2 }, { "production-science-pack", 2 }, { "high-tech-science-pack", 2 }, { "space-science-pack", 2 } }, time = 60 }, 9 )
+	WeightSystem.Functions.AddTech( "WeightSystem-" .. n .. "-1", MODNAME .. "/graphics/" .. n .. ".png", n, 0.02, nil, { count_formula = "200*L", ingredients = { { "science-pack-1", 2 }, { "science-pack-2", 2 }, { "science-pack-3", 2 }, { "production-science-pack", 2 }, { "high-tech-science-pack", 2 } }, time = 60 }, 5 )
+	WeightSystem.Functions.AddTech( "WeightSystem-" .. n .. "-6", MODNAME .. "/graphics/" .. n .. ".png", n, 0.10, { "WeightSystem-" .. n .. "-1" }, { count_formula = "200*L", ingredients = { { "science-pack-1", 2 }, { "science-pack-2", 2 }, { "science-pack-3", 2 }, { "production-science-pack", 2 }, { "high-tech-science-pack", 2 }, { "space-science-pack", 2 } }, time = 60 }, 9 )
 end
 
 local m = "MaxWeight"

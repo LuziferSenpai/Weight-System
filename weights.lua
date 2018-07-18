@@ -1,12 +1,12 @@
-function modtest( n )
+--[[function modtest( n )
 	if ( mods and mods[n] ) or ( game and game.active_mods[n] ) then
 		return true
 	else
 		return false
 	end
-end
+end]]--
 
-Weights =
+local Weights =
 {
 	["Ammo"] =
 	{
@@ -477,7 +477,6 @@ Weights =
 		-- Item Collector Updated
 
 		["item-collector-area"] = 50,
-
 	},
 	["Tools"] =
 	{
@@ -489,7 +488,7 @@ Weights =
 
 		-- Atomic Pickaxe
 
-		--["atomic-pickaxe"] = 7.5,
+		["atomic-pickaxe"] = 7.5,
 
 		-- Land Mover
 
@@ -532,7 +531,5 @@ Weights =
 		["flamethrower"] = 15
 	},
 }
-
-require "modsupport/AtomicPickaxe"
 
 return Weights

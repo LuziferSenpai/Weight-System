@@ -137,24 +137,28 @@ Functions =
 	end,
 	GetCaption = function( id )
 		local p = global.PlayerData[id]
-		return p.cw .. "/" .. p.mw .. "kg"
+		return { "Weight-System.kg", p.cw .. "/" .. p.mw }
 	end,
 	UpdateCaption = function( id )
 		local pd = global.PlayerData[id]
 		mod_gui.get_button_flow( game.players[id] ).WeightSystemButton.caption = Functions.GetCaption( id )
 	end,
 	MainGui = function( p )
-		local A01 = Functions.AddFrame( p, "WeightSystemMainGui", nil, "Select a Weight Category" )
+		local t = {}
+		for _, n in pairs( global.Categories ) do
+			table.insert( t, { "Weight-System." .. n } )
+		end
+		local A01 = Functions.AddFrame( p, "WeightSystemMainGui", nil, { "Weight-System.SE" } )
 		local A02 =
 		{
 			Functions.AddFlow( A01, "WeightSystemFlow01", "description_vertical_flow" ),
-			Functions.AddDropDown( A01, "WeightSystemDropDown", global.Categories ),
+			Functions.AddDropDown( A01, "WeightSystemDropDown", t ),
 			Functions.AddFrame( A01, "WeightSystemFrame01", "outer_frame", nil )
 		}
 		local A03 = Functions.AddTable( A02[1], "WeightSystemTable01", 2 )
 		local A04 =
 		{
-			Functions.AddLabel( A03, "WeightSystemLabel01", "Max Weight Increase:", "description_label" ),
+			Functions.AddLabel( A03, "WeightSystemLabel01", { "Weight-System.MW" }, "description_label" ),
 			Functions.AddLabel( A03, "WeightSystemLabel02", ( global.MapData.mwi * 100 ) .. "%", "description_value_label" )
 		}
 	end,
@@ -169,7 +173,7 @@ Functions =
 		B02[2].style.maximal_height = 270
 		local B03 =
 		{
-			Functions.AddLabel( B02[1], "WeightSystemLabel03", "Decrease", "description_label" ),
+			Functions.AddLabel( B02[1], "WeightSystemLabel03", { "Weight-System.DE" }, "description_label" ),
 			Functions.AddLabel( B02[1], "WeightSystemLabel04", ( game.forces["player"].get_ammo_damage_modifier( name ) * 100 ) .. "%", "description_value_label" ),
 			Functions.AddFrame( B02[2], "WeightSystemFrame02", "image_frame", nil )
 		}
@@ -188,8 +192,8 @@ Functions =
 		for n = 1, c / 2 do
 			local B05 =
 			{
-				Functions.AddLabel( B04, "WeightSystemLabel02_" .. n, "Item" ),
-				Functions.AddLabel( B04, "WeightSystemLabel03_" .. n, "Weight" )
+				Functions.AddLabel( B04, "WeightSystemLabel02_" .. n, { "Weight-System.I" } ),
+				Functions.AddLabel( B04, "WeightSystemLabel03_" .. n, { "Weight-System.W" } )
 			}
 		end
 		for n = 1, #i do
@@ -201,8 +205,6 @@ Functions =
 			}
 			local z = game.entity_prototypes[na] or game.tile_prototypes[na] or game.equipment_prototypes[na] or game.item_prototypes[na]
 			B06[1].tooltip = z.localised_name
-			B06[1].style.width = 32
-			B06[1].style.height = 32
 		end
 	end,
 	AddButton = function( f, n, c )
